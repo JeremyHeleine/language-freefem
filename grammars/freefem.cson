@@ -1,0 +1,44 @@
+'scopeName': 'source.freefem'
+'name': 'Freefem++'
+'fileTypes': ['edp']
+
+'patterns': [
+	{
+		'begin': '//'
+		'end': '\\n'
+		'name': 'comment.line.double-dash.freefem'
+	}
+	{
+		'match': '\\b(break|catch|continue|else|end|for|if|include|load|return|throw|try|while)\\b'
+		'name': 'keyword.control.freefem'
+	}
+	{
+		'match': '\\b(bool|border|complex|fespace|func|ifstream|int|macro|matrix|mesh|ofstream|problem|real|solve|string|varf)\\b'
+		'name': 'storage.type.freefem'
+	}
+	{
+		'match': '\\b(abs|acos|adaptmesh|asin|atan|buildmesh|convect|cos|cosh|cotan|cotanh|dx|dy|exp|int1d|int2d|intalledge|jump|log|log10|max|min|movemesh23|on|plot|savemesh|sin|sinh|sqrt|square|tan|tanh)\\('
+		'captures':
+			'1':
+				'name': 'support.function.freefem'
+	}
+	{
+		'match': '\\b(([0-9]+\\.?[0-9]*)|(\\.[0-9]+))((E|e)(\\+|-)?[0-9]+)?\\b'
+		'name': 'constant.numeric.freefem'
+	}
+	{
+		'match': '\\b(cin|cout|endl|false|i|pi|true|x|y|z)\\b'
+		'name': 'support.constant.freefem'
+	}
+	{
+		'begin': '"'
+		'beginCaptures':
+			'0':
+				'name': 'punctuation.definition.string.begin.freefem'
+		'end': '"'
+		'endCaptures':
+			'0':
+				'name': 'punctuation.definition.string.end.freefem'
+		'name': 'string.quoted.double.freefem'
+	}
+]

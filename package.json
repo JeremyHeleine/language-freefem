@@ -1,0 +1,17 @@
+{
+  "name": "language-freefem",
+  "version": "0.0.0",
+  "description": "Freefem++ language support in Atom",
+  "engines": {
+    "atom": "*"
+  },
+  "dependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/JeremyHeleine/language-freefem.git"
+  },
+  "bugs": {
+    "url": "https://github.com/JeremyHeleine/language-freefem/issues"
+  },
+  "license": "MIT"
+}
