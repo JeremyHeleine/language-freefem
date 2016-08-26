@@ -1,44 +1,94 @@
-'scopeName': 'source.freefem'
-'name': 'Freefem++'
-'fileTypes': ['edp']
+scopeName: 'source.freefem'
+name: 'Freefem++'
+fileTypes: ['edp']
 
-'patterns': [
+patterns: [
 	{
-		'begin': '//'
-		'end': '\\n'
-		'name': 'comment.line.double-dash.freefem'
+		include: '#comments'
 	}
 	{
-		'match': '\\b(break|catch|continue|else|end|for|if|include|load|return|throw|try|while)\\b'
-		'name': 'keyword.control.freefem'
+		include: '#numbers'
 	}
 	{
-		'match': '\\b(bool|border|complex|fespace|func|ifstream|int|macro|matrix|mesh|ofstream|problem|real|solve|string|varf)\\b'
-		'name': 'storage.type.freefem'
+		include: '#strings'
 	}
 	{
-		'match': '\\b(abs|acos|adaptmesh|asin|atan|buildmesh|convect|cos|cosh|cotan|cotanh|dx|dy|exp|int1d|int2d|intalledge|jump|log|log10|max|min|movemesh23|on|plot|savemesh|sin|sinh|sqrt|square|tan|tanh)\\('
-		'captures':
-			'1':
-				'name': 'support.function.freefem'
+		include: '#keywords'
 	}
 	{
-		'match': '\\b(([0-9]+\\.?[0-9]*)|(\\.[0-9]+))((E|e)(\\+|-)?[0-9]+)?\\b'
-		'name': 'constant.numeric.freefem'
+		include: '#types'
 	}
 	{
-		'match': '\\b(cin|cout|endl|false|i|pi|true|x|y|z)\\b'
-		'name': 'support.constant.freefem'
+		include: '#functions'
 	}
 	{
-		'begin': '"'
-		'beginCaptures':
-			'0':
-				'name': 'punctuation.definition.string.begin.freefem'
-		'end': '"'
-		'endCaptures':
-			'0':
-				'name': 'punctuation.definition.string.end.freefem'
-		'name': 'string.quoted.double.freefem'
+		include: '#constants'
 	}
 ]
+
+repository:
+	comments:
+		patterns: [
+			{
+				begin: '//'
+				end: '\\n'
+				name: 'comment.line.double-dash.freefem'
+			}
+		]
+
+	numbers:
+		patterns: [
+			{
+				match: '\\b(([0-9]+\\.?[0-9]*)|(\\.[0-9]+))((E|e)(\\+|-)?[0-9]+)?\\b'
+				name: 'constant.numeric.freefem'
+			}
+		]
+
+	strings:
+		patterns: [
+			{
+				begin: '"'
+				beginCaptures:
+					'0':
+						name: 'punctuation.definition.string.begin.freefem'
+				end: '"'
+				endCaptures:
+					'0':
+						name: 'punctuation.definition.string.end.freefem'
+				name: 'string.quoted.double.freefem'
+			}
+		]
+
+	keywords:
+		patterns: [
+			{
+				match: '\\b(break|catch|continue|else|end|for|if|include|load|return|throw|try|while)\\b'
+				name: 'keyword.control.freefem'
+			}
+		]
+
+	types:
+		patterns: [
+			{
+				match: '\\b(bool|border|complex|fespace|func|ifstream|int|macro|matrix|mesh|ofstream|problem|real|solve|string|varf)\\b'
+				name: 'storage.type.freefem'
+			}
+		]
+
+	functions:
+		patterns: [
+			{
+				match: '\\b(abs|acos|adaptmesh|asin|atan|buildmesh|convect|cos|cosh|cotan|cotanh|dx|dy|exp|int1d|int2d|intalledge|jump|log|log10|max|min|movemesh23|on|plot|savemesh|sin|sinh|sqrt|square|tan|tanh)\\('
+				captures:
+					'1':
+						name: 'support.function.freefem'
+			}
+		]
+
+	constants:
+		patterns: [
+			{
+				match: '\\b(cin|cout|endl|false|i|pi|true|x|y|z)\\b'
+				name: 'support.constant.freefem'
+			}
+		]
