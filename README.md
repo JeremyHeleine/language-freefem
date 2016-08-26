@@ -1,3 +1,3 @@
 # language-freefem package
 
-This package adds the support of Freefem++ language in Atom, with syntax highlighting.
+This package adds the support of FreeFem++ language in Atom, with syntax highlighting.
