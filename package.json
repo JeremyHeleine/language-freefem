@@ -1,59 +1,17 @@
 {
-  "_args": [
-    [
-      {
-        "raw": "C:\\Users\\Andrea\\AppData\\Local\\Temp\\d-117213-6584-osib1e\\package.tgz",
-        "scope": null,
-        "escapedName": null,
-        "name": null,
-        "rawSpec": "C:\\Users\\Andrea\\AppData\\Local\\Temp\\d-117213-6584-osib1e\\package.tgz",
-        "spec": "C:\\Users\\Andrea\\AppData\\Local\\Temp\\d-117213-6584-osib1e\\package.tgz",
-        "type": "local"
-      },
-      "C:\\Users\\Andrea\\AppData\\Local\\Temp\\apm-install-dir-117213-6584-6edtl1"
-    ]
-  ],
-  "_from": "..\\d-117213-6584-osib1e\\package.tgz",
-  "_id": "language-freefem@0.1.0",
-  "_inCache": true,
-  "_installable": true,
-  "_location": "/language-freefem",
-  "_phantomChildren": {},
-  "_requested": {
-    "raw": "C:\\Users\\Andrea\\AppData\\Local\\Temp\\d-117213-6584-osib1e\\package.tgz",
-    "scope": null,
-    "escapedName": null,
-    "name": null,
-    "rawSpec": "C:\\Users\\Andrea\\AppData\\Local\\Temp\\d-117213-6584-osib1e\\package.tgz",
-    "spec": "C:\\Users\\Andrea\\AppData\\Local\\Temp\\d-117213-6584-osib1e\\package.tgz",
-    "type": "local"
-  },
-  "_requiredBy": [
-    "#USER"
-  ],
-  "_resolved": "file:..\\d-117213-6584-osib1e\\package.tgz",
-  "_shasum": "cff91eff9fd33cbe2a83d41a7a1b1ce2a8f3769a",
-  "_shrinkwrap": null,
-  "_spec": "C:\\Users\\Andrea\\AppData\\Local\\Temp\\d-117213-6584-osib1e\\package.tgz",
-  "_where": "C:\\Users\\Andrea\\AppData\\Local\\Temp\\apm-install-dir-117213-6584-6edtl1",
-  "bugs": {
-    "url": "https://github.com/JeremyHeleine/language-freefem/issues"
-  },
-  "dependencies": {},
+  "name": "language-freefem",
+  "version": "0.1.0",
   "description": "Freefem++ language support in Atom",
-  "devDependencies": {},
   "engines": {
     "atom": "*"
   },
-  "homepage": "https://github.com/JeremyHeleine/language-freefem#readme",
-  "license": "MIT",
-  "name": "language-freefem",
-  "optionalDependencies": {},
-  "readme": "# language-freefem package\n\nThis package adds the support of Freefem++ language in Atom, with syntax highlighting.\n",
-  "readmeFilename": "README.md",
+  "dependencies": {},
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/JeremyHeleine/language-freefem.git"
+    "url": "https://github.com/JeremyHeleine/language-freefem.git"
   },
-  "version": "0.1.0"
+  "bugs": {
+    "url": "https://github.com/JeremyHeleine/language-freefem/issues"
+  },
+  "license": "MIT"
 }
