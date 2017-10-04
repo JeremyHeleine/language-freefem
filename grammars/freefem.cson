@@ -6,7 +6,7 @@
 	{
 		'begin': '//'
 		'end': '\\n'
-		'name': 'comment.line.double-dash.freefem'
+		'name': 'comment.line.double-slash.freefem'
 	}
 	{
 		'match': '\\b(break|catch|continue|else|end|for|if|include|load|return|throw|try|while)\\b'
@@ -17,7 +17,7 @@
 		'name': 'storage.type.freefem'
 	}
 	{
-		'match': '\\b(abs|acos|adaptmesh|asin|atan|buildmesh|convect|cos|cosh|cotan|cotanh|dx|dy|exp|int1d|int2d|intalledge|jump|log|log10|max|min|movemesh23|on|plot|savemesh|sin|sinh|sqrt|square|tan|tanh)\\('
+		'match': '\\b(abs|acos|adaptmesh|asin|atan|buildmesh|convect|cos|cosh|cotan|cotanh|dx|dy|dxx|dyy|dxy|exp|int1d|int2d|intalledge|jump|log|log10|max|min|movemesh23|on|plot|savemesh|sin|sinh|sqrt|square|tan|tanh)\\('
 		'captures':
 			'1':
 				'name': 'support.function.freefem'
@@ -41,4 +41,17 @@
 				'name': 'punctuation.definition.string.end.freefem'
 		'name': 'string.quoted.double.freefem'
 	}
+		{
+			'begin': '\\/\\*'
+			'beginCaptures':
+				'0':
+					'name': 'punctuation.definition.comment.begin.freefem'
+			'end': '\\*\\/'
+			'endCaptures':
+				'0':
+					'name': 'punctuation.definition.comment.end.freefem'
+			'name': 'comment.block.freefem'
+		}
+		'match': '\\*/.*\\n'
+		'name': 'invalid.illegal.stray-comment-end.freefem'
 ]
