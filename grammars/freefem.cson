@@ -1,6 +1,6 @@
 scopeName: 'source.freefem'
 name: 'FreeFem++'
-fileTypes: ['edp']
+fileTypes: ['edp', 'idp']
 
 patterns: [
 	{
