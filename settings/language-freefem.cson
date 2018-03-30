@@ -1,0 +1,3 @@
+'.source.freefem':
+	'editor':
+		'commentStart': '// '

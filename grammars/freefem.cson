@@ -35,7 +35,7 @@ repository:
 			{
 				begin: '//'
 				end: '\\n'
-				name: 'comment.line.double-dash.freefem'
+				name: 'comment.line.double-slash.freefem'
 			}
 			{
 				begin: '/\\*'
