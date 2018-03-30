@@ -22,6 +22,9 @@ patterns: [
 		include: '#functions'
 	}
 	{
+		include: '#methods'
+	}
+	{
 		include: '#constants'
 	}
 ]
@@ -50,7 +53,7 @@ repository:
 	numbers:
 		patterns: [
 			{
-				match: '\\b(([0-9]+\\.?[0-9]*)|(\\.[0-9]+))((E|e)(\\+|-)?[0-9]+)?\\b'
+				match: '\\b(([0-9]+\\.?[0-9]*)|(\\.[0-9]+))((E|e)(\\+|-)?[0-9]+)?i?\\b'
 				name: 'constant.numeric.freefem'
 			}
 		]
@@ -73,7 +76,15 @@ repository:
 	keywords:
 		patterns: [
 			{
-				match: '\\b(break|catch|continue|else|end|for|if|include|load|return|throw|try|while)\\b'
+				match: '\\b(end|return|throw)\\b'
+				name: 'keyword.control.freefem'
+			}
+			{
+				match: '\\b(break|catch|continue|else|for|if|try|while)\\b'
+				name: 'keyword.control.freefem'
+			}
+			{
+				match: '\\b(include|load)\\b'
 				name: 'keyword.control.freefem'
 			}
 		]
@@ -81,7 +92,23 @@ repository:
 	types:
 		patterns: [
 			{
-				match: '\\b(bool|border|complex|fespace|func|ifstream|int|macro|matrix|mesh|ofstream|problem|real|solve|string|varf)\\b'
+				match: '\\b(bool|complex|int|matrix|real|string)\\b'
+				name: 'storage.type.freefem'
+			}
+			{
+				match: '\\b(border|mesh3?)\\b'
+				name: 'storage.type.freefem'
+			}
+			{
+				match: '\\b(fespace|problem|solve|varf)\\b'
+				name: 'storage.type.freefem'
+			}
+			{
+				match: '\\b(func|macro)\\b'
+				name: 'storage.type.freefem'
+			}
+			{
+				match: '\\b([io]fstream)\\b'
 				name: 'storage.type.freefem'
 			}
 		]
@@ -89,17 +116,155 @@ repository:
 	functions:
 		patterns: [
 			{
-				match: '\\b(abs|acos|adaptmesh|asin|atan|buildmesh|convect|cos|cosh|cotan|cotanh|dx|dy|exp|int1d|int2d|intalledge|jump|log|log10|max|min|movemesh23|on|plot|savemesh|sin|sinh|sqrt|square|tan|tanh)\\('
-				captures:
-					'1':
-						name: 'support.function.freefem'
+				match: '(?<!\\.)\\b(NaN|ato[if]|isInf|isNaN|sort|swap)\\b'
+				name: 'support.function.freefem'
+			}
+			{
+				match: '(?<!\\.)\\b(assert|exec|exit|system)\\b'
+				name: 'support.function.freefem'
+			}
+			{
+				match: '(?<!\\.)\\b((?:Affine|Linear)(?:CG|GMRES)|(?:complex)?EigenValue|BFGS|NLCG)\\b'
+				name: 'support.function.freefem'
+			}
+			{
+				match: '(?<!\\.)\\b(adaptmesh|AddLayers|buildlayers|buildmesh|change|checkbemesh|checkmovemesh|chi|b?cube|deplacement|emptymesh|extract|gluemesh|gmshload3?|metis(?:nodal|dual)|movemesh(?:3D?|23|2D3Dsurf)?|mshmet|readmesh3?|savegmsh|savemesh|scotch|SplitedgeMesh|splitmesh(?:12|[346])?|square|tetg(?:convexhull|reconstruction|transfo)?|(?:show|get)border|trunc)\\b'
+				name: 'support.function.freefem'
+			}
+			{
+				match: '(?<!\\.)\\b(int[1-3]d|intall(?:edges|faces)|jump|on|set)\\b'
+				name: 'support.function.freefem'
+			}
+			{
+				match: '(?<!\\.)\\b(convect|interpolate|projection)\\b'
+				name: 'support.function.freefem'
+			}
+			{
+				match: '(?<!\\.)\\b((?:inv)?diff(?:np|pos)|a?(?:cos|sin|tan)h?|abs|arg|atan2|ceil|conj|cotanh?|d[xyz]{1,2}|dist|erfc?|exp|f?(?:min|max)|fdim|floor|fmod|imag|invdiffnp|[jy][01n]|[lt]gamma|log(?:10)?|lrint|lround|polar|pow|real|rint|round|sign|sqrt)\\b'
+				name: 'support.function.freefem'
+			}
+			{
+				match: '(?<!\\.)\\b(medit|plot|readsol|savesol)\\b'
+				name: 'support.function.freefem'
+			}
+			{
+				match: '(?<!\\.)\\b(getline|LoadVec|LoadFlag|SaveVec|flag)\\b'
+				name: 'support.function.freefem'
+			}
+			{
+				match: '(?<!\\.)\\b(clock|copysign|signbit)\\b'
+				name: 'support.function.freefem'
+			}
+			{
+				match: '(?<!\\.)\\b((?:base|dir)name|(?:c[hd]|is|mk|read|rm)dir|[gs]etenv|chmod|cpfile|stat|unlink|unsetenv)\\b'
+				name: 'support.function.freefem'
+			}
+			{
+				match: '(?<!\\.)\\b(defaultto(?:SuperLu|UMFPACK(?:64)?|PARDISO|MUMPSseq))\\b'
+				name: 'support.function.freefem'
+			}
+			{
+				match: '(?<!\\.)\\b([dz](?:geev|ggev)|dgelsy|dgesdd|dsyev|dsygvd|geev|inv|zheev|zhegv)\\b'
+				name: 'support.function.freefem'
+			}
+			{
+				match: '(?<!\\.)\\b(nlopt(?:DIRECT(?:L|LRand|(?:L?No|LRandNo)?Scal)|OrigDIRECTL?|StoGO(?:Rand)?|LBFGS|PRAXIS|Var[12]|TNewton(?:Precond)?(?:Restart)?|CRS2|MMA|COBYLA|NEWUOA|NEWUOABound|NelderMead|Sbplx|BOBYQA|ISRES|SLSQP|MLSL|MLSLLDS|AUGLAG|AUGLAGEQ))\\b'
+				name: 'support.function.freefem'
+			}
+			{
+				match: '(?<!\\.)\\b(radiusSearch|Voisinage|neighborhood|ClosePoint(?:s[12])?)\\b'
+				name: 'support.function.freefem'
+			}
+			{
+				match: '(?<!\\.)\\b(extractborder|curvature|raxicurvature|curves|setecurveabcisse|equiparameter|Tresca|VonMises)\\b'
+				name: 'support.function.freefem'
+			}
+			{
+				match: '(?<!\\.)\\b(Wait|trywait|Post|msync|Read|Write)\\b'
+				name: 'support.function.freefem'
+			}
+			{
+				match: '(?<!\\.)\\b([ab]iry|cmaes|IPOPT|newuoa|savevtk|vtkload3?|bmo|MatUpWind[01]|mmg3d|netg(?:stl|load)?|savehdf5sol)\\b'
+				name: 'support.function.freefem'
+			}
+			{
+				match: '(?<!\\.)\\b(plandfft|execute|delete|dfft|map)\\b'
+				name: 'support.function.freefem'
+			}
+			{
+				match: '(?<!\\.)\\b((?:apply|make)IlutPrecond|symmetrizeCSR)\\b'
+				name: 'support.function.freefem'
+			}
+			{
+				match: '(?<!\\.)\\b(Vtkaddmesh|Vtkaddscalar|Dxaddmesh|Dxaddtimeseries|Dxaddsol2ts|BECtrap|GPvortex|dxGPVortex|dyGPVortex)\\b'
+				name: 'support.function.freefem'
+			}
+			{
+				match: '(?<!\\.)\\b(boundaniso|distance|checkdist|expert|exactpartition|isoline|Curve|Area|findallocalmin|readpcm|MetricKuate|MetricPk|freeyams|MeshGenQA)\\b'
+				name: 'support.function.freefem'
+			}
+			{
+				match: '(?<!\\.)\\b(s?random|srandomdev)\\b'
+				name: 'support.function.freefem'
+			}
+			{
+				match: '(?<!\\.)\\b(QF[1-3]d|tripleQF)\\b'
+				name: 'support.function.freefem'
+			}
+			{
+				match: '(?<!\\.)\\b(omp[sg]etnumthreads|ompgetmaxthreads)\\b'
+				name: 'support.function.freefem'
+			}
+			{
+				match: '(?<!\\.)\\b(gslpolysolvequadratic|gslpolysolvecubic|gslpolycomplexsolve|gslrnguniform|gslrnguniformpos|gslname|gslrngget|gslrngmin|gslrngmax|gslrngset|gslrngtype)\\b'
+				name: 'support.function.freefem'
+			}
+			{
+				match: '(?<!\\.)\\b(gslcdf(?:(?:[ft]dist|beta|cauchy|chisq|exponential|flat|gamma|gumbel[12]|laplace|logistic|lognormal|pareto|rayleigh|u?gaussian|weibull)[PQ](?:inv)?|(?:(?:negative)?binomial|exppow|geometric|pascal|poisson)[PQ]))\\b'
+				name: 'support.function.freefem'
+			}
+			{
+				match: '(?<!\\.)\\b(gslran(?:(?:[ft]dist|beta|cauchy|chisq|erlang|exponential|exppow|flat|gumbel[12]|landau|laplace|logistic|lognormal|pareto|rayleigh(?:tail)?|u?gaussiantail|weibull)(?:pdf)?|(?:(?:negative)?binomial|bernouilli|geometric|logarithmic|pascal|poisson)pdf|levy|gamma(?:int|knuth|mt|pdf)?|gaussian(?:pdf|ratiomethod|ziggurat)?|ugaussian(?:pdf|ratiomethod)?))\\b'
+				name: 'support.function.freefem'
+			}
+			{
+				match: '(?<!\\.)\\b(gslsf(?:airy(?:[AB]i(?:deriv)?(?:scaled)?|zero[AB]i(?:deriv)?)|bessel(?:[JY][01n]|[IK][01n](?:scaled)?|[jy][0-2l]|[ik][0-2l]scaled|[JY]nu|[IK]nu(?:scaled)?|lnKnu|zeroJ(?:[01]|nu))|debye[1-6]|ellint(?:[EF]|RC|[DEKP]comp)|erf[cQZ]?|[CS]h?i|fermidirac(?:[0-2]|m1|int|[3m]?half|inc0)|(?:gegenpoly|laguerre)[1-3n]|transport[2-5]|exp(?:m1|mult|rel[2n]?|intE[12in](?:scaled)?|int3)?|gamma(?:inc[PQ]?|inv|star)?|hyperg(?:2F0|0F1|(?:1F1|U)(?:int)?)|lambertW(?:0|m1)|legendre(?:P[1-3l]|Q[01l]|(?:sph)?Plm|arraysize|H3d[01]?)|conicalP(?:m?half|[01]|(?:sph|cyl)reg)|synchrotron[12]|log(?:abs|1plusx(?:mx)?)?|anglerestrict(?:pos|symm)|psi(?:[1n]|1?int|1piy)?|zeta(?:m1(?:int)?|int)?|eta(?:int)?|(?:ln)?(?:double)?fact|(?:ln)?(?:choose|poch)|beta(?:inc)?|ln(?:cos|sin)h|clausen|hydrogenicR1|dawson|dilog|multiply|logerfc|hazard|atanint|lngamma|taylorcoeff|pochrel|lnbeta|powint|sin|cos|hypot|sinc|hzeta))\\b'
+				name: 'support.function.freefem'
+			}
+		]
+
+	methods:
+		patterns: [
+			{
+				match: '(?<=\\.)\\b(adj)\\b'
+				name: 'support.function.freefem'
+			}
+			{
+				match: '(?<=\\.)\\b(u?sleep)\\b'
+				name: 'support.function.freefem'
+			}
+			{
+				match: '(?<=\\.)\\b(seekg|tellg)\\b'
+				name: 'support.function.freefem'
 			}
 		]
 
 	constants:
 		patterns: [
 			{
-				match: '\\b(cin|cout|endl|false|i|pi|true|x|y|z)\\b'
+				match: '\\b(BDM1(?:Ortho)?|Edge03d|Edge[12]3D|FEQF|HCT|P0(?:3d|Edge)?|P[1-4](?:dc)?|P[12]3d|P[1-5]Edge|P1(?:b|b3d|bl|bl3d|nc)|P2(?:b|BR|Morley)|RT0(?:3d|Ortho)?|RT1(?:Ortho)?)\\b'
+				name: 'support.constant.freefem'
+			}
+			{
+				match: '\\b(append|binary|cin|cout|endl|flush)\\b'
+				name: 'support.constant.freefem'
+			}
+			{
+				match: '\\b(CG|Cholesky|Crout|GMRES|LU|N|P|pi|sparsesolver|verbosity|version|x|y|z)\\b'
+				name: 'support.constant.freefem'
+			}
+			{
+				match: '\\b(false|true)\\b'
 				name: 'support.constant.freefem'
 			}
 		]
